@@ -14,5 +14,4 @@ node_modules/
 *.log
 *.tsbuildinfo
 .env.local
-.next/
-/out/
+/dist/
