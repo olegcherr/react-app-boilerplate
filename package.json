@@ -1,4 +1,14 @@
 {
   "private": true,
-  "main": "index.js"
+  "main": "index.js",
+  "prettier": {
+    "endOfLine": "lf",
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all",
+    "arrowParens": "avoid"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
 }
