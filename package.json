@@ -3,7 +3,9 @@
   "main": "dist/server.js",
   "scripts": {
     "DEV": "yarn build & yarn start",
-    "build": "webpack",
+    "build": "yarn build:app & yarn build:server",
+    "build:app": "webpack --config ./webpack.app.config.js",
+    "build:server": "webpack --config ./webpack.server.config.js",
     "start": "node ."
   },
   "prettier": {
