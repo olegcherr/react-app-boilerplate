@@ -5,6 +5,15 @@ import path from 'path'
 
 const app = express()
 
+if (process.env.NODE_ENV === 'development') {
+  var webpack = require('webpack')
+  var webpackConfig = require('../webpack.app.config.js')
+  var compiler = webpack(webpackConfig)
+
+  app.use(require('webpack-dev-middleware')(compiler))
+  app.use(require('webpack-hot-middleware')(compiler))
+}
+
 app.use(express.static(path.resolve('dist')))
 
 app.get('*', (req: Request, res: Response) => {

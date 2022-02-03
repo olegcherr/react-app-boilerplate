@@ -4,7 +4,11 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   target: 'web',
-  entry: './src/app.tsx',
+  entry: [
+    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    './src/app.tsx',
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
@@ -21,4 +25,5 @@ module.exports = {
     filename: 'app.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 }
