@@ -1,5 +1,8 @@
 const nodeExternals = require('webpack-node-externals')
 const path = require('path')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const ReactRefreshTypeScript = require('react-refresh-typescript')
+const BrowserHmrPlugin = require('./dev-utils/browserHmrPlugin')
 
 module.exports = [
   {
@@ -12,9 +15,19 @@ module.exports = [
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
+          test: /\.[jt]sx?$/i,
           exclude: /node_modules/,
+          use: [
+            {
+              loader: require.resolve('ts-loader'),
+              options: {
+                getCustomTransformers: () => ({
+                  before: [ReactRefreshTypeScript()],
+                }),
+                transpileOnly: true,
+              },
+            },
+          ],
         },
       ],
     },
@@ -22,6 +35,7 @@ module.exports = [
       filename: 'app.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [new BrowserHmrPlugin(), new ReactRefreshPlugin()],
   },
   {
     mode: 'development',
