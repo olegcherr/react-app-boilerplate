@@ -5,9 +5,11 @@ const ReactRefreshTypeScript = require('react-refresh-typescript')
 const BrowserHmrPlugin = require('./dev_tools/browserHmrPlugin')
 const ServerStartPlugin = require('./dev_tools/serverStartPlugin')
 
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
 module.exports = [
   {
-    mode: 'development',
+    mode: isDevelopment ? 'development' : 'production',
     target: 'web',
     entry: './src/app.tsx',
     resolve: {
@@ -23,9 +25,11 @@ module.exports = [
               loader: require.resolve('ts-loader'),
               options: {
                 getCustomTransformers: () => ({
-                  before: [ReactRefreshTypeScript()],
+                  before: [isDevelopment && ReactRefreshTypeScript()].filter(
+                    Boolean,
+                  ),
                 }),
-                transpileOnly: true,
+                transpileOnly: isDevelopment,
               },
             },
           ],
@@ -36,10 +40,13 @@ module.exports = [
       filename: 'app.js',
       path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [new BrowserHmrPlugin(), new ReactRefreshPlugin()],
+    plugins: [
+      isDevelopment && new BrowserHmrPlugin(),
+      isDevelopment && new ReactRefreshPlugin(),
+    ].filter(Boolean),
   },
   {
-    mode: 'development',
+    mode: isDevelopment ? 'development' : 'production',
     target: 'node',
     externals: [nodeExternals()],
     entry: './src/server.tsx',
@@ -60,6 +67,6 @@ module.exports = [
       path: path.resolve(__dirname, 'dist'),
       clean: true,
     },
-    plugins: [new ServerStartPlugin()],
+    plugins: [isDevelopment && new ServerStartPlugin()].filter(Boolean),
   },
 ]
