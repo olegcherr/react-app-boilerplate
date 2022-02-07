@@ -5,6 +5,10 @@
     "DEV": "yarn cleanup & yarn run-with-env webpack --watch --node-env=development",
     "build": "yarn cleanup & webpack --node-env=production",
     "start": "yarn run-with-env node .",
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --list-different .",
+    "lint": "eslint --fix --max-warnings 0 .",
+    "lint:check": "eslint --max-warnings 0 .",
     "run-with-env": "react-env --dest dist --prefix PUBLIC_ --debug -- ",
     "cleanup": "rimraf dist & mkdir dist"
   },
