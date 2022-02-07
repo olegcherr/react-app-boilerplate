@@ -12,10 +12,6 @@ module.exports = class ServerStartPlugin {
       }
 
       this.server = spawn('node', ['.'])
-
-      this.server.on('close', () => {
-        this.server = null
-      })
     })
   }
 }
