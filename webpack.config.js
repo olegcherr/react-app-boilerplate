@@ -12,6 +12,10 @@ module.exports = [
     mode: isDevelopment ? 'development' : 'production',
     target: 'web',
     entry: './src/app.tsx',
+    output: {
+      filename: 'app.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
@@ -36,10 +40,6 @@ module.exports = [
         },
       ],
     },
-    output: {
-      filename: 'app.js',
-      path: path.resolve(__dirname, 'dist'),
-    },
     plugins: [
       isDevelopment && new BrowserHmrPlugin(),
       isDevelopment && new ReactRefreshPlugin(),
@@ -48,8 +48,13 @@ module.exports = [
   {
     mode: isDevelopment ? 'development' : 'production',
     target: 'node',
-    externals: [nodeExternals()],
     entry: './src/server.tsx',
+    output: {
+      filename: 'server.js',
+      path: path.resolve(__dirname, 'dist'),
+      clean: true,
+    },
+    externals: [nodeExternals()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
@@ -61,11 +66,6 @@ module.exports = [
           exclude: /node_modules/,
         },
       ],
-    },
-    output: {
-      filename: 'server.js',
-      path: path.resolve(__dirname, 'dist'),
-      clean: true,
     },
     plugins: [isDevelopment && new ServerStartPlugin()].filter(Boolean),
   },
