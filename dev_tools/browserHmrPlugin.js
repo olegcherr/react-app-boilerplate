@@ -45,7 +45,7 @@ module.exports = class BrowserHmrPlugin {
     compiler.hooks.entryOption.tap(this.constructor.name, (context, entry) => {
       Object.values(entry).forEach(entryValue => {
         entryValue.import.unshift(
-          `./dev-utils/browserHmrClient.js?${this.port}`,
+          `./dev_tools/browserHmrClient.js?${this.port}`,
         )
       })
     })

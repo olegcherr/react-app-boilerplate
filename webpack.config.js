@@ -2,8 +2,8 @@ const nodeExternals = require('webpack-node-externals')
 const path = require('path')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const ReactRefreshTypeScript = require('react-refresh-typescript')
-const BrowserHmrPlugin = require('./dev-utils/browserHmrPlugin')
-const ServerStartPlugin = require('./dev-utils/serverStartPlugin')
+const BrowserHmrPlugin = require('./dev_tools/browserHmrPlugin')
+const ServerStartPlugin = require('./dev_tools/serverStartPlugin')
 
 module.exports = [
   {
