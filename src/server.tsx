@@ -6,6 +6,7 @@ import path from 'path'
 const app = express()
 
 app.use(express.static(path.resolve('dist')))
+app.use(express.static(path.resolve('public')))
 
 app.get('*', (req: Request, res: Response) => {
   res.set('Content-Type', 'text/html')
