@@ -56,3 +56,11 @@ declare module '*.otf' {
   const url: string
   export default url
 }
+
+//
+
+// https://stackoverflow.com/questions/44717164/unable-to-import-svg-files-in-typescript
+declare module '*.svg' {
+  const svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+  export default svg
+}

@@ -61,6 +61,20 @@ module.exports = [
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
           type: 'asset/resource',
         },
+        {
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/i,
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgoConfig: {
+                  plugins: ['removeXMLNS', 'removeDimensions', 'sortAttrs'],
+                },
+              },
+            },
+          ],
+        },
       ],
     },
     plugins: [
