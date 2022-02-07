@@ -24,6 +24,7 @@ app.get('*', (req: Request, res: Response) => {
         <body>
           <div id="root" />
 
+          <script src="/__ENV.js" />
           <script src="/app.js" />
         </body>
       </html>,
