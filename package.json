@@ -15,6 +15,86 @@
     "trailingComma": "all",
     "arrowParens": "avoid"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "@typescript-eslint",
+      "simple-import-sort"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "dot-notation": "warn",
+      "eqeqeq": [
+        "warn",
+        "smart"
+      ],
+      "func-names": [
+        "warn",
+        "as-needed"
+      ],
+      "func-style": [
+        "warn",
+        "declaration",
+        {
+          "allowArrowFunctions": true
+        }
+      ],
+      "no-console": "warn",
+      "no-throw-literal": "warn",
+      "no-useless-computed-key": "warn",
+      "no-useless-concat": "warn",
+      "no-useless-rename": "warn",
+      "object-shorthand": "warn",
+      "operator-assignment": "warn",
+      "prefer-const": "warn",
+      "prefer-template": "warn",
+      "radix": "warn",
+      "spaced-comment": [
+        "warn",
+        "always",
+        {
+          "block": {
+            "balanced": true
+          }
+        }
+      ],
+      "strict": [
+        "warn",
+        "never"
+      ],
+      "@typescript-eslint/array-type": [
+        "warn",
+        {
+          "default": "array-simple"
+        }
+      ],
+      "@typescript-eslint/ban-ts-comment": [
+        "warn",
+        {
+          "ts-ignore": "allow-with-description"
+        }
+      ],
+      "@typescript-eslint/no-unused-vars": "off",
+      "simple-import-sort/imports": "warn",
+      "simple-import-sort/exports": "warn"
+    }
+  },
   "dependencies": {
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
@@ -27,7 +107,12 @@
     "@svgr/webpack": "^6.2.1",
     "@types/express": "^4.17.13",
     "@types/webpack-env": "^1.16.3",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "css-loader": "^6.6.0",
+    "eslint": "7.32.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "express": "^4.17.2",
     "prettier": "^2.5.1",
     "react-refresh": "^0.11.0",
