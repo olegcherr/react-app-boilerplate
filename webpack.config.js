@@ -3,6 +3,7 @@ const path = require('path')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const ReactRefreshTypeScript = require('react-refresh-typescript')
 const BrowserHmrPlugin = require('./dev-utils/browserHmrPlugin')
+const ServerStartPlugin = require('./dev-utils/serverStartPlugin')
 
 module.exports = [
   {
@@ -58,5 +59,6 @@ module.exports = [
       filename: 'server.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [new ServerStartPlugin()],
   },
 ]
