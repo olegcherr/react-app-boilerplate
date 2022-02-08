@@ -5,6 +5,8 @@ import { renderToString } from 'react-dom/server'
 
 const app = express()
 
+app.disable('x-powered-by')
+
 app.use(express.static(path.resolve('dist')))
 app.use(express.static(path.resolve('public')))
 
