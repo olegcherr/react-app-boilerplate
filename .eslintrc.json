@@ -62,6 +62,7 @@
     ],
     "@typescript-eslint/no-unused-vars": "off",
     "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn"
   },
