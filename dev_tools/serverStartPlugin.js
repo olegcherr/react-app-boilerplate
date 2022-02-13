@@ -11,7 +11,7 @@ module.exports = class ServerStartPlugin {
         process.kill(this.server.pid)
       }
 
-      this.server = spawn('node', ['.'])
+      this.server = spawn('node', ['.'], { stdio: 'inherit' })
     })
   }
 }
