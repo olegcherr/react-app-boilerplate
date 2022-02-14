@@ -6,12 +6,23 @@ module.exports = class ServerStartPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.done.tap(this.constructor.name, () => {
-      if (this.server) {
-        process.kill(this.server.pid)
-      }
+    let restartTimer
 
-      this.server = spawn('node', ['.'], { stdio: 'inherit' })
+    compiler.hooks.done.tap(this.constructor.name, () => {
+      clearTimeout(restartTimer)
+
+      restartTimer = setTimeout(
+        () => {
+          if (this.server) {
+            process.kill(this.server.pid)
+          }
+
+          this.server = spawn('node', ['.'], { stdio: 'inherit' })
+        },
+        // Add a little delay before restarting the server.
+        // It needed to allow the client to fetch updated assets.
+        this.server ? 1000 : 0,
+      )
     })
   }
 }
