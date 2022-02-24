@@ -51,7 +51,20 @@ module.exports = [
               },
             },
             'postcss-loader',
-            'sass-loader',
+            {
+              loader: 'resolve-url-loader',
+              options: {
+                // Complains about 'normalize.css'
+                silent: true,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                // Needed for 'resolve-url-loader'
+                sourceMap: true,
+              },
+            },
           ],
         },
         {
