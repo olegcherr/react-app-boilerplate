@@ -11,9 +11,9 @@ module.exports = [
   {
     mode: isDevelopment ? 'development' : 'production',
     target: 'web',
-    entry: './src/app.tsx',
+    entry: './src/client.tsx',
     output: {
-      filename: 'app.js',
+      filename: 'client.js',
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
